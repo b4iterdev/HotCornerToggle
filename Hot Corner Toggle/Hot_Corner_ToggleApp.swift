@@ -13,6 +13,7 @@ struct Hot_Corner_ToggleApp: App {
     @StateObject private var store: PresetStore
     @StateObject private var monitor: AppMonitor
     @StateObject private var applier: PresetApplier
+    @StateObject private var launchOnLogin = LaunchOnLoginController()
     @StateObject private var coordinator = EditorCoordinator()
 
     init() {
@@ -29,6 +30,7 @@ struct Hot_Corner_ToggleApp: App {
                 .environmentObject(store)
                 .environmentObject(monitor)
                 .environmentObject(applier)
+                .environmentObject(launchOnLogin)
                 .environmentObject(coordinator)
                 .frame(width: 360)
         } label: {

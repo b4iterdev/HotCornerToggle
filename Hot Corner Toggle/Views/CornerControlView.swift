@@ -10,6 +10,7 @@ import SwiftUI
 struct CornerControlView: View {
     @EnvironmentObject private var store: PresetStore
     @EnvironmentObject private var applier: PresetApplier
+    @EnvironmentObject private var launchOnLogin: LaunchOnLoginController
     @EnvironmentObject private var coordinator: EditorCoordinator
     @Environment(\.openWindow) private var openWindow
 
@@ -20,6 +21,8 @@ struct CornerControlView: View {
             presetsSection
             Divider()
             rulesSection
+            Divider()
+            launchOnLoginSection
             Divider()
             quitButton
         }
@@ -144,6 +147,36 @@ struct CornerControlView: View {
         .padding(.vertical, 2)
     }
 
+    private var launchOnLoginSection: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            HStack {
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("Launch on Login")
+                        .font(.subheadline.bold())
+                    Text(launchOnLogin.statusDescription)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+                Spacer()
+                Toggle("", isOn: Binding(
+                    get: { launchOnLogin.isEnabled },
+                    set: { launchOnLogin.setLaunchOnLoginEnabled($0) }
+                ))
+                .toggleStyle(.switch)
+                .labelsHidden()
+                .disabled(!launchOnLogin.canChangeSetting)
+            }
+
+            if let validationMessage = launchOnLogin.validationMessage {
+                Text(validationMessage)
+                    .font(.caption2)
+                    .foregroundStyle(.orange)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+        }
+        .onAppear { launchOnLogin.refreshStatus() }
+    }
+
     private var quitButton: some View {
         Button("Quit Hot Corner Toggle") {
             NSApplication.shared.terminate(nil)
@@ -161,5 +194,6 @@ struct CornerControlView: View {
             store: PresetStore(),
             monitor: AppMonitor()
         ))
+        .environmentObject(LaunchOnLoginController())
         .environmentObject(EditorCoordinator())
 }
