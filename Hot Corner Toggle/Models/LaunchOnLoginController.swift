@@ -160,7 +160,7 @@ final class LaunchOnLoginController: ObservableObject {
         case .requiresApproval:
             return "Approval required in System Settings → General → Login Items."
         case .notFound:
-            return "macOS cannot validate this app bundle for Login Items."
+            return "macOS cannot validate this app bundle. Move the app to a normal location such as /Applications, launch it once from there, then try again."
         case .enabled, .notRegistered:
             return nil
         @unknown default:
