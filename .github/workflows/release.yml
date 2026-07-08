@@ -35,6 +35,12 @@ jobs:
             DEVELOPMENT_TEAM="" \
             build
 
+      - name: Ad-hoc sign and verify the .app bundle
+        run: |
+          APP="build/Build/Products/Release/Hot Corner Toggle.app"
+          codesign --force --deep --sign - "$APP"
+          codesign --verify --deep --strict --verbose=2 "$APP"
+
       - name: Zip the .app bundle
         run: |
           cd build/Build/Products/Release
