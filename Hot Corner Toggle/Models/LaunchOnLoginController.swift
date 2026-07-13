@@ -113,7 +113,7 @@ final class LaunchOnLoginController: ObservableObject {
         case .requiresApproval:
             return .requiresApproval
         case .notFound:
-            return .unavailable
+            return .disabled
         @unknown default:
             return .unavailable
         }
@@ -142,7 +142,7 @@ final class LaunchOnLoginController: ObservableObject {
         case (true, .requiresApproval):
             return "Launch on Login was registered but still needs approval in System Settings → General → Login Items."
         case (_, .notFound):
-            return "macOS could not find this app bundle. Move the app to a normal location such as Applications, then try again."
+            return nil
         case (true, .notRegistered):
             return "Launch on Login did not stay enabled after registration. Please try again or check Login Items in System Settings."
         case (false, .enabled):
@@ -160,7 +160,7 @@ final class LaunchOnLoginController: ObservableObject {
         case .requiresApproval:
             return "Approval required in System Settings → General → Login Items."
         case .notFound:
-            return "macOS cannot validate this app bundle. Move the app to a normal location such as /Applications, launch it once from there, then try again."
+            return nil
         case .enabled, .notRegistered:
             return nil
         @unknown default:
