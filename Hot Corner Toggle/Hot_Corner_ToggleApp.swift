@@ -34,7 +34,8 @@ struct Hot_Corner_ToggleApp: App {
                 .environmentObject(coordinator)
                 .frame(width: 360)
         } label: {
-            Image(systemName: "rectangle.dashed.badge.record")
+            Image("MenuBarIconTemplate", label: Text("Hot Corner Toggle"))
+                .renderingMode(.template)
         }
         .menuBarExtraStyle(.window)
 

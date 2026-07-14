@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-label="Hot Corner Toggle app icon">
+  <defs>
+    <linearGradient id="tile" x1="166" y1="106" x2="858" y2="918" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#27333B"/>
+      <stop offset="0.52" stop-color="#121B21"/>
+      <stop offset="1" stop-color="#091014"/>
+    </linearGradient>
+    <linearGradient id="rim" x1="238" y1="180" x2="786" y2="844" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.22"/>
+      <stop offset="0.46" stop-color="#A8D9E5" stop-opacity="0.08"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0.34"/>
+    </linearGradient>
+    <linearGradient id="corner" x1="238" y1="238" x2="786" y2="786" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#8DF7FF"/>
+      <stop offset="0.52" stop-color="#28D8E8"/>
+      <stop offset="1" stop-color="#08AFC5"/>
+    </linearGradient>
+    <linearGradient id="switchTrack" x1="368" y1="438" x2="656" y2="586" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0B8294"/>
+      <stop offset="1" stop-color="#0AC0D3"/>
+    </linearGradient>
+    <radialGradient id="knob" cx="38%" cy="28%" r="75%">
+      <stop offset="0" stop-color="#FFF4B5"/>
+      <stop offset="0.48" stop-color="#FFD55C"/>
+      <stop offset="1" stop-color="#F49A28"/>
+    </radialGradient>
+    <filter id="tileShadow" x="0" y="0" width="1024" height="1024" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="30" stdDeviation="34" flood-color="#000000" flood-opacity="0.42"/>
+    </filter>
+    <filter id="cyanGlow" x="120" y="120" width="784" height="784" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="18" result="blur"/>
+      <feFlood flood-color="#20E7F4" flood-opacity="0.45"/>
+      <feComposite in2="blur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="knobGlow" x="480" y="390" width="260" height="244" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="9" stdDeviation="14" flood-color="#FFB635" flood-opacity="0.48"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#tileShadow)">
+    <rect x="80" y="68" width="864" height="864" rx="198" fill="url(#tile)"/>
+  </g>
+  <rect x="83" y="71" width="858" height="858" rx="195" fill="none" stroke="url(#rim)" stroke-width="6"/>
+  <path d="M171 326V263C171 211 213 169 265 169H328" fill="none" stroke="#FFFFFF" stroke-opacity="0.055" stroke-width="42" stroke-linecap="round"/>
+
+  <g fill="none" stroke="url(#corner)" stroke-width="58" stroke-linecap="round" stroke-linejoin="round" filter="url(#cyanGlow)">
+    <path d="M386 267H292C278 267 267 278 267 292V386"/>
+    <path d="M638 267H732C746 267 757 278 757 292V386"/>
+    <path d="M386 757H292C278 757 267 746 267 732V638"/>
+    <path d="M638 757H732C746 757 757 746 757 732V638"/>
+  </g>
+
+  <rect x="362" y="425" width="300" height="174" rx="87" fill="#050B0E" fill-opacity="0.72"/>
+  <rect x="370" y="433" width="284" height="158" rx="79" fill="url(#switchTrack)"/>
+  <rect x="377" y="440" width="270" height="144" rx="72" fill="none" stroke="#A8FAFF" stroke-opacity="0.2" stroke-width="5"/>
+  <circle cx="566" cy="512" r="62" fill="url(#knob)" filter="url(#knobGlow)"/>
+  <circle cx="548" cy="492" r="15" fill="#FFFFFF" fill-opacity="0.65"/>
+  <path d="M456 479V545" stroke="#B3F8FF" stroke-width="18" stroke-linecap="round"/>
+</svg>
